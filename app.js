@@ -25,8 +25,6 @@ app.get('/users', function(req, res) {
 
 
 
-
-
 // =================== //
 // SHOW DIRECT FRIENDS
 // =================== //
