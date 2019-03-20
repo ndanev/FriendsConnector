@@ -26,11 +26,17 @@ app.get('/users', function(req, res) {
 app.get('/show_friends/:id', function(req, res) {
 
     var friends = users[4].friends;
+    var friendList = [];
 
-    console.log(friends);
+    // console.log(friends);
 
+    for (i in friends) {
 
-    res.render('friends', {users: users});
+        friendList.push(users[friends[i]-1].firstName + " " + users[friends[i]-1].surname);
+
+    }
+
+    res.render('friends', {users: users, friendList: friendList});
 
 });
 
