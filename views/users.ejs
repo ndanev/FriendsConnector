@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FriendsConnector</title>
+    <!-- GOOGLEFONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Friends Connector</h1>
+
+    <div class="show-users">
+        <!-- <% users.forEach(function(user) { %>
+
+            <h3><%= user.firstName %></h3>
+
+        
+        <% }) %> -->
+
+        <h3>Firstname: <%= users[4].firstName %></h3>
+
+        <h3>Lastname: <%= users[4].surname %></h3>
+
+        <p><strong>Age:</strong> <%= users[4].age %></p>
+
+        <p><strong>Gender:</strong> <%= users[4].gender %></p>
+
+        <p><strong>Friends:</strong> <%= users[4].friends %></p>
+
+        <a href="/show_friends/<%= users[4].id %>">Show Friends</a><br>
+
+        <a href="">Show Friends Of Friends</a><br>
+
+        <a href="">Show Suggested Friends</a>
+
+    
+    </div>
+
+</body>
+</html>
