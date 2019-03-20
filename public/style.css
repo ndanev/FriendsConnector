@@ -1,3 +1,47 @@
 * {
     font-family: 'Nunito Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    text-transform: uppercase;
+}
+
+.show-user {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.show-friends {
+    text-align: center;
+}
+
+.show-friends h2 {
+    text-transform: uppercase;
+    margin: 20px 0;
+}
+
+.show-friends p {
+    margin: 20px 0;
+}
+
+.show-friends ul li {
+    list-style: none;
+    margin: 10px 0;
+}
+
+.show-friends-of-friends {
+    text-align: center;
+}
+
+.show-friends-of-friends ul li {
+    list-style: none;
 }

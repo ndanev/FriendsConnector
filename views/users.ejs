@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>FriendsConnector</title>
+    <!-- FONTAWESOME -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
     <!-- GOOGLEFONTS -->
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -13,13 +15,7 @@
 
     <h1>Friends Connector</h1>
 
-    <div class="show-users">
-        <!-- <% users.forEach(function(user) { %>
-
-            <h3><%= user.firstName %></h3>
-
-        
-        <% }) %> -->
+    <div class="show-user">
 
         <h3>Firstname: <%= users[4].firstName %></h3>
 
@@ -29,11 +25,9 @@
 
         <p><strong>Gender:</strong> <%= users[4].gender %></p>
 
-        <p><strong>Friends:</strong> <%= users[4].friends %></p>
+        <a href="/show_friends/<%= users[4].id %>">Show Direct Friends</a><br>
 
-        <a href="/show_friends/<%= users[4].id %>">Show Friends</a><br>
-
-        <a href="">Show Friends Of Friends</a><br>
+        <a href="/friends_of_friends/<%= users[4].id %>">Show Friends Of Friends</a><br>
 
         <a href="">Show Suggested Friends</a>
 

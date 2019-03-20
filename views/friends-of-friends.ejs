@@ -12,23 +12,22 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+
     <h1>Friends Connector</h1>
 
-    <div class="show-friends">
+    <div class="show-friends-of-friends">
 
         <h2><%= users[4].firstName %> <%= users[4].surname %></h2>
-        <p><strong>Direct Friends:</strong></p>
-        <!-- <%= friendList %> -->
+        <h3>Friends Of Friends: </h3>
 
-        <% friendList.forEach(function(friend) { %>
-
+        <% names.forEach(function(name) { %>
             <ul>
-                <li><i class="fas fa-user"></i> <%= friend %></li>
+                <li><i class="fas fa-user"></i> <%= name %></li>
             </ul>
-
         <% }); %>
 
-    </div>
 
+    </div>
+    
 </body>
 </html>
