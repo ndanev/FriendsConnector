@@ -12,14 +12,26 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 
+function findUserById(id) {
+
+    for (var i = 0; i < users.length; i++) {
+
+        if (users[i].id == id) {
+            return users[i];
+        }
+    }
+
+
+}
+
 
 // ============== //
 // SHOW ALL USERS //
 // ============== //
 
-app.get('/users', function(req, res) {
+app.get('/users', function (req, res) {
 
-    res.render('users', { users: users});
+    res.render('users', { users: users });
 
 });
 
@@ -29,21 +41,23 @@ app.get('/users', function(req, res) {
 // SHOW DIRECT FRIENDS
 // =================== //
 
-app.get('/show_friends/:id', function(req, res) {
+app.get('/show-friends/:id', function (req, res) {
 
-    var friends = users[4].friends;
+    userID = req.params.id;
+    user = findUserById(userID);
+
+    var friends = user.friends;
     var friendList = [];
-    
 
-    // console.log(friends);
+    for (var i = 0; i < friends.length; i++) {
 
-    for (i in friends) {
+        var u = findUserById(friends[i]);
 
-        friendList.push(users[friends[i] -1 ].firstName + " " + users[friends[i] -1 ].surname);
+        friendList.push(u);
 
     }
 
-    res.render('friends', {users: users, friendList: friendList});
+    res.render('friends', { user: user, friendList: friendList });
 
 });
 
@@ -53,7 +67,7 @@ app.get('/show_friends/:id', function(req, res) {
 // SHOW FRIENDS OF FRIENDS
 // ======================= //
 
-app.get('/friends_of_friends/:id', function(req, res) {
+app.get('/friends-of-friends/:id', function (req, res) {
 
     var friends = users[4].friends;
     var friendsOfFriendIDarrays = [];
@@ -61,11 +75,8 @@ app.get('/friends_of_friends/:id', function(req, res) {
     var names = [];
 
     for (i in friends) {
-        friendsOfFriendIDarrays.push(users[friends[i] -1].friends);
+        friendsOfFriendIDarrays.push(users[friends[i] - 1].friends);
     }
-
-    console.log(friendsOfFriendIDarrays);
-    console.log("-----------");
 
     for (i in friendsOfFriendIDarrays) {
         for (j in friendsOfFriendIDarrays[i]) {
@@ -73,23 +84,18 @@ app.get('/friends_of_friends/:id', function(req, res) {
         }
     }
 
-    console.log(friendsOfFriendCompleteID);
-    console.log("-----------");
 
     for (i in friendsOfFriendCompleteID) {
-        names.push(users[friendsOfFriendCompleteID[i]-1].firstName +  "  "  + users[friendsOfFriendCompleteID[i]-1].surname);
+        names.push(users[friendsOfFriendCompleteID[i] - 1].firstName + "  " + users[friendsOfFriendCompleteID[i] - 1].surname);
     }
 
 
-    console.log(names);
-    console.log("-END-");
-    
-    res.render('friends-of-friends', {users: users, names: names});
+    res.render('friends-of-friends', { users: users, names: names });
 
 });
 
 
 
-app.listen(3131, function() {
+app.listen(3131, function () {
     console.log('Server started on port 3131...');
 })

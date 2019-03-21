@@ -30,8 +30,8 @@
                             <h2><%= user.firstName %> <%= user.surname %></h2>
                             <p><strong>Age:</strong> <%= user.age %> </p>
                             <p><strong>Gender:</strong> <%= user.gender %> </p>
-                            <a href="/show_friends/<%= user.id %>">Direct Friends</a><br>
-                            <a href="/friends_of_friends/<%= user.id %>">Friends Of Friends</a><br>
+                            <a href="/show-friends/<%= user.id %>">Direct Friends</a><br>
+                            <a href="/friends-of-friends/<%= user.id %>">Friends Of Friends</a><br>
                             <a href="">Suggested Friends</a>
                         </div>
                     </div>
@@ -39,20 +39,6 @@
                 <%}); %>
             </div>
         </div>
-
-        <!-- <h3>Firstname: <%= users[4].firstName %></h3>
-
-        <h3>Lastname: <%= users[4].surname %></h3>
-
-        <p><strong>Age:</strong> <%= users[4].age %></p>
-
-        <p><strong>Gender:</strong> <%= users[4].gender %></p>
-
-        <a href="/show_friends/<%= users[4].id %>">Show Direct Friends</a><br>
-
-        <a href="/friends_of_friends/<%= users[4].id %>">Show Friends Of Friends</a><br>
-
-        <a href="">Show Suggested Friends</a> -->
 
     
     </div>

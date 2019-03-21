@@ -22,13 +22,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="user-friends">
-                        <h2><%= users[4].firstName %> <%= users[4].surname %></h2>
+                        <h2><%= user.firstName %> <%= user.surname %></h2>
                         <img src="https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png" alt="">
+
                         <h3>Direct Friends</h3>
+
                         <% friendList.forEach(function(friend) { %>
 
                             <ul>
-                                <li> <a href=""><%= friend %></a></li>
+                                <li> <a href="/show-friends/<%= friend.id %>"> <%= friend.firstName %> <%= friend.surname %></a></li>
                             </ul>
 
                         <% }); %>
@@ -39,17 +41,6 @@
             </div>
         </div>
 
-        <!-- <h2><%= users[4].firstName %> <%= users[4].surname %></h2>
-        <p><strong>Direct Friends:</strong></p>
-        <%= friendList %>
-
-        <% friendList.forEach(function(friend) { %>
-
-            <ul>
-                <li><i class="fas fa-user"></i> <%= friend %></li>
-            </ul>
-
-        <% }); %> -->
 
     </div>
 
