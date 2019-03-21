@@ -34,7 +34,6 @@ function userExistsInList (id, list) {
 
 function twoOrMoreCommonFriends(user1, user2) {
 
-    console.log("============================");
     var counter = 0;
     for (var i = 0; i < user1.friends.length; i++) {
         
@@ -50,6 +49,68 @@ function twoOrMoreCommonFriends(user1, user2) {
     } else {
         return false;
     }
+}
+
+function friends(userID) {
+
+    var user = findUserById(userID);
+
+    var friends = user.friends;
+    var friendList = [];
+
+    for (var i = 0; i < friends.length; i++) {
+
+        var u = findUserById(friends[i]);
+
+        friendList.push(u);
+
+    }
+    return friendList;
+}
+
+function friendsOfFriends(userID) {
+
+    var user = findUserById(userID);
+    var friends = user.friends;
+    var friendsOfFriends = [];
+
+    for (var i = 0; i < friends.length; i++) {
+
+        var u = findUserById(friends[i]);
+
+        for (j = 0; j < u.friends.length; j++) {
+
+            var m = findUserById(u.friends[j]);
+
+            if (!userExistsInList(m.id, friendsOfFriends )) {
+
+                friendsOfFriends.push(m);
+            }
+
+        }
+    }
+
+    return friendsOfFriends;
+}
+
+function suggestedFriends(userID) {
+
+    var user = findUserById(userID);
+    var suggestedFriends = [];
+    
+    
+    for (var i = 0; i < users.length; i++) {
+
+        var u = findUserById(users[i].id);
+
+        if ( u.id != userID && !user.friends.includes(u.id) && twoOrMoreCommonFriends(user, u)) {
+
+            suggestedFriends.push(u);
+
+        }
+        
+    }
+    return suggestedFriends;
 }
 
 
@@ -71,21 +132,13 @@ app.get('/users', function (req, res) {
 
 app.get('/show-friends/:id', function (req, res) {
 
-    userID = req.params.id;
-    user = findUserById(userID);
+    var userID = req.params.id;
 
-    var friends = user.friends;
-    var friendList = [];
+    var user = findUserById(userID);
 
-    for (var i = 0; i < friends.length; i++) {
+    var f = friends(userID);
 
-        var u = findUserById(friends[i]);
-
-        friendList.push(u);
-
-    }
-
-    res.render('friends', { user: user, friendList: friendList });
+    res.render('friends', { user: user, friendList: f });
 
 });
 
@@ -97,28 +150,14 @@ app.get('/show-friends/:id', function (req, res) {
 
 app.get('/friends-of-friends/:id', function (req, res) {
 
-    userID = req.params.id;
-    user = findUserById(userID);
-    var friends = user.friends;
-    var friendsOfFriends = [];
+    var userID = req.params.id;
 
-    for (var i = 0; i < friends.length; i++) {
+    var user = findUserById(userID);
 
-        u = findUserById(friends[i]);
+    var ff = friendsOfFriends(userID);
 
-        for (j = 0; j < u.friends.length; j++) {
 
-            m = findUserById(u.friends[j]);
-
-            if (!userExistsInList(m.id, friendsOfFriends )) {
-
-                friendsOfFriends.push(m);
-            }
-
-        }
-    }
-
-    res.render('friends-of-friends', { user: user, friendsOfFriends: friendsOfFriends });
+    res.render('friends-of-friends', { user: user, friendsOfFriends: ff });
 
 });
 
@@ -129,24 +168,14 @@ app.get('/friends-of-friends/:id', function (req, res) {
 
 app.get('/suggested-friends/:id', function(req, res) {
     
-    userID = req.params.id;
-    user = findUserById(userID);
-    suggestedFriends = [];
-    
-    
-    for (var i = 0; i < users.length; i++) {
+    var userID = req.params.id;
 
-        u = findUserById(users[i].id);
+    var user = findUserById(userID);
 
-        if ( u.id != userID && !user.friends.includes(u.id) && twoOrMoreCommonFriends(user, u)) {
+    var sf = suggestedFriends(userID);
 
-            suggestedFriends.push(u);
 
-        }
-        
-    }
-
-    res.render('suggested-friends', {user: user, suggestedFriends: suggestedFriends });
+    res.render('suggested-friends', {user: user, suggestedFriends: sf });
 
 });
 
