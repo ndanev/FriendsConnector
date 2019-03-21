@@ -5,19 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>FriendsConnector</title>
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- FONTAWESOME -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
     <!-- GOOGLEFONTS -->
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+    <!-- CSS FILE -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <h1>Friends Connector</h1>
+    <div class="line"></div>
 
     <div class="show-user">
+        <div class="container">
+            <div class="row">
+                <% users.forEach(function(user) { %>
 
-        <h3>Firstname: <%= users[4].firstName %></h3>
+                    <div class="col-md-3 col-sm-12">
+                        <div class="card">
+                            <img src="https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png" alt="">
+                            <h2><%= user.firstName %> <%= user.surname %></h2>
+                            <p><strong>Age:</strong> <%= user.age %> </p>
+                            <p><strong>Gender:</strong> <%= user.gender %> </p>
+                            <a href="/show_friends/<%= user.id %>">Direct Friends</a><br>
+                            <a href="/friends_of_friends/<%= user.id %>">Friends Of Friends</a><br>
+                            <a href="">Suggested Friends</a>
+                        </div>
+                    </div>
+
+                <%}); %>
+            </div>
+        </div>
+
+        <!-- <h3>Firstname: <%= users[4].firstName %></h3>
 
         <h3>Lastname: <%= users[4].surname %></h3>
 
@@ -29,7 +52,7 @@
 
         <a href="/friends_of_friends/<%= users[4].id %>">Show Friends Of Friends</a><br>
 
-        <a href="">Show Suggested Friends</a>
+        <a href="">Show Suggested Friends</a> -->
 
     
     </div>

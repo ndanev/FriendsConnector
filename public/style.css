@@ -6,25 +6,127 @@
 
 body {
     background-color: #1C304A;
-    color: #B3EFFF;
 }
 
 h1 {
     text-align: center;
     margin-top: 50px;
     text-transform: uppercase;
+    font-weight: 700;
+    color: white;
 }
+
+.line {
+    background-color: #00CFFF;
+    width: 100px;
+    height: 6px;
+    margin: 20px auto;
+}
+
+
+/* USERS */
 
 .show-user {
-    text-align: center;
-    margin-top: 40px;
+    margin-top: 50px; 
 }
+
+.card {
+    margin-bottom: 30px;
+    text-align: center;
+    color: black;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+.card img {
+    width: 50%;
+    margin: 20px auto;
+}
+
+.card a {
+    text-decoration: none;
+    background-color: #046B99;
+    color: white;
+    padding: 10px 20px;
+    margin: 0 20px;
+    font-weight: 600;
+    border-radius: 3px;
+}
+
+.card a:last-child {
+    margin-bottom: 20px;
+}
+
+.card a:hover {
+    background-color: #B3EFFF;
+    color: #046B99;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+}
+
+
+
+
+
+/* SHOW FRIENDS */
 
 .show-friends {
-    text-align: center;
+    margin-top: 50px;
 }
 
-.show-friends h2 {
+.user-friends {
+    width: 100%;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.user-friends h2 {
+    text-transform: uppercase;
+}
+
+.user-friends img {
+    width: 100px;
+    height: 100px;
+    margin: 10px 0;
+}
+
+.user-friends h3 {
+    margin: 20px;
+}
+
+.user-friends ul li  {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.user-friends ul li a {
+    text-decoration: none;
+}
+
+.user-friends ul li:hover {
+    background-color: #B3EFFF;
+    
+}
+
+#back-to-users {
+    background-color:#046B99;
+    color: white;
+    margin: 0 auto;
+    font-weight: 600;
+    padding: 10px 10px;
+    text-decoration: none;
+    border-radius: 3px;
+    
+}
+
+#back-to-users:hover {
+    background-color: #B3EFFF;
+    color: #1C304A;
+}
+
+/* .show-friends h2 {
     text-transform: uppercase;
     margin: 20px 0;
 }
@@ -36,7 +138,7 @@ h1 {
 .show-friends ul li {
     list-style: none;
     margin: 10px 0;
-}
+} */
 
 .show-friends-of-friends {
     text-align: center;

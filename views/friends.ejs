@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Friends Connector</title>
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- FONTAWESOME -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
     <!-- GOOGLEFONTS -->
@@ -13,12 +15,33 @@
 </head>
 <body>
     <h1>Friends Connector</h1>
+    <div class="line"></div>
 
     <div class="show-friends">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="user-friends">
+                        <h2><%= users[4].firstName %> <%= users[4].surname %></h2>
+                        <img src="https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png" alt="">
+                        <h3>Direct Friends</h3>
+                        <% friendList.forEach(function(friend) { %>
 
-        <h2><%= users[4].firstName %> <%= users[4].surname %></h2>
+                            <ul>
+                                <li> <a href=""><%= friend %></a></li>
+                            </ul>
+
+                        <% }); %>
+                        <a id="back-to-users" href="/users">Back To Users</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- <h2><%= users[4].firstName %> <%= users[4].surname %></h2>
         <p><strong>Direct Friends:</strong></p>
-        <!-- <%= friendList %> -->
+        <%= friendList %>
 
         <% friendList.forEach(function(friend) { %>
 
@@ -26,7 +49,7 @@
                 <li><i class="fas fa-user"></i> <%= friend %></li>
             </ul>
 
-        <% }); %>
+        <% }); %> -->
 
     </div>
 
