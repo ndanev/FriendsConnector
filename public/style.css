@@ -140,7 +140,7 @@ h1 {
     margin: 10px 0;
 } */
 
-.show-friends-of-friends {
+/* .show-friends-of-friends {
     text-align: center;
 }
 
@@ -156,4 +156,9 @@ h1 {
 .show-friends-of-friends ul li {
     list-style: none;
     margin: 10px 0;
+} */
+
+.friends-of-friends {
+    width: 100%;
+    background-color: white;
 }

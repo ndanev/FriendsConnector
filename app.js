@@ -21,7 +21,15 @@ function findUserById(id) {
         }
     }
 
+}
 
+function userExistsInList (id, list) {
+    for (var i = 0; i < list.length; i++) {
+        if (list[i].id == id) {
+            return true;
+        }
+    } 
+    return false;
 }
 
 
@@ -69,28 +77,28 @@ app.get('/show-friends/:id', function (req, res) {
 
 app.get('/friends-of-friends/:id', function (req, res) {
 
-    var friends = users[4].friends;
-    var friendsOfFriendIDarrays = [];
-    var friendsOfFriendCompleteID = [];
-    var names = [];
+    userID = req.params.id;
+    user = findUserById(userID);
+    var friends = user.friends;
+    var friendsOfFriends = [];
 
-    for (i in friends) {
-        friendsOfFriendIDarrays.push(users[friends[i] - 1].friends);
-    }
+    for (var i = 0; i < friends.length; i++) {
 
-    for (i in friendsOfFriendIDarrays) {
-        for (j in friendsOfFriendIDarrays[i]) {
-            friendsOfFriendCompleteID.push(friendsOfFriendIDarrays[i][j]);
+        u = findUserById(friends[i]);
+
+        for (j = 0; j < u.friends.length; j++) {
+
+            m = findUserById(u.friends[j]);
+
+            if (!userExistsInList(m.id, friendsOfFriends )) {
+
+                friendsOfFriends.push(m);
+            }
+
         }
     }
 
-
-    for (i in friendsOfFriendCompleteID) {
-        names.push(users[friendsOfFriendCompleteID[i] - 1].firstName + "  " + users[friendsOfFriendCompleteID[i] - 1].surname);
-    }
-
-
-    res.render('friends-of-friends', { users: users, names: names });
+    res.render('friends-of-friends', { user: user, friendsOfFriends: friendsOfFriends });
 
 });
 
