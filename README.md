@@ -4,5 +4,5 @@
 
 # How to run application
 # step 1: clone or download repository
-# step 2: type "npm istall" in cmd to install node_models folder
+# step 2: type "npm install" in cmd to install node_models folder
 # step 3: type "node app.js" to run server
