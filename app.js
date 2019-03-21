@@ -37,10 +37,8 @@ function twoOrMoreCommonFriends(user1, user2) {
     var counter = 0;
     for (var i = 0; i < user1.friends.length; i++) {
         
-        console.log(i);
         if (user2.friends.includes(user1.friends[i])) {
-            counter++;
-            
+            counter++;   
         }
     }
 
@@ -89,7 +87,6 @@ function friendsOfFriends(userID) {
 
         }
     }
-
     return friendsOfFriends;
 }
 

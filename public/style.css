@@ -105,10 +105,10 @@ h1 {
     text-decoration: none;
 }
 
-.user-friends ul li:hover {
+/* .user-friends ul li:hover {
     background-color: #B3EFFF;
     
-}
+} */
 
 #back-to-users {
     background-color:#046B99;
@@ -125,38 +125,6 @@ h1 {
     background-color: #B3EFFF;
     color: #1C304A;
 }
-
-/* .show-friends h2 {
-    text-transform: uppercase;
-    margin: 20px 0;
-}
-
-.show-friends p {
-    margin: 20px 0;
-}
-
-.show-friends ul li {
-    list-style: none;
-    margin: 10px 0;
-} */
-
-/* .show-friends-of-friends {
-    text-align: center;
-}
-
-.show-friends-of-friends h2 {
-    text-transform: uppercase;
-    margin: 20px 0;
-}
-
-.show-friends-of-friends h3 {
-    margin: 20px 0;
-}
-
-.show-friends-of-friends ul li {
-    list-style: none;
-    margin: 10px 0;
-} */
 
 .friends-of-friends {
     width: 100%;

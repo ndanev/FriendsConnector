@@ -31,7 +31,7 @@
                             <% friendsOfFriends.forEach(function(friend) { %>
 
                                 <ul>
-                                    <li> <%= friend.firstName %> <%= friend.surname %> </li>
+                                    <li> <a href="/friends-of-friends/<%= friend.id %>"> <%= friend.firstName %> <%= friend.surname %> </a> </li>
                                 </ul>
 
                             <% }); %>
