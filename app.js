@@ -32,6 +32,26 @@ function userExistsInList (id, list) {
     return false;
 }
 
+function twoOrMoreCommonFriends(user1, user2) {
+
+    console.log("============================");
+    var counter = 0;
+    for (var i = 0; i < user1.friends.length; i++) {
+        
+        console.log(i);
+        if (user2.friends.includes(user1.friends[i])) {
+            counter++;
+            
+        }
+    }
+
+    if (counter > 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 // ============== //
 // SHOW ALL USERS //
@@ -99,6 +119,34 @@ app.get('/friends-of-friends/:id', function (req, res) {
     }
 
     res.render('friends-of-friends', { user: user, friendsOfFriends: friendsOfFriends });
+
+});
+
+
+// ======================== //
+// SHOW SUGGENSTED OF FRIENDS
+// ======================== //
+
+app.get('/suggested-friends/:id', function(req, res) {
+    
+    userID = req.params.id;
+    user = findUserById(userID);
+    suggestedFriends = [];
+    
+    
+    for (var i = 0; i < users.length; i++) {
+
+        u = findUserById(users[i].id);
+
+        if ( u.id != userID && !user.friends.includes(u.id) && twoOrMoreCommonFriends(user, u)) {
+
+            suggestedFriends.push(u);
+
+        }
+        
+    }
+
+    res.render('suggested-friends', {user: user, suggestedFriends: suggestedFriends });
 
 });
 
