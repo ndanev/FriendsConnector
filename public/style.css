@@ -34,7 +34,6 @@ h1 {
     margin-bottom: 30px;
     text-align: center;
     color: black;
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .card img {
@@ -44,13 +43,20 @@ h1 {
 
 .card a {
     text-decoration: none;
+    font-weight: 500;
+    padding: 0 10px;
+    color: #046B99;
+}
+
+/* .card a {
+    text-decoration: none;
     background-color: #046B99;
     color: white;
     padding: 10px 20px;
     margin: 0 20px;
     font-weight: 600;
     border-radius: 3px;
-}
+} */
 
 .card a:last-child {
     margin-bottom: 20px;
@@ -62,9 +68,6 @@ h1 {
     transition: all .4s ease;
     -webkit-transition: all .4s ease;
 }
-
-
-
 
 
 /* SHOW FRIENDS */

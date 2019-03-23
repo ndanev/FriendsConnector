@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
     <h1>Friends Connector</h1>
     <div class="line"></div>
@@ -22,19 +24,65 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="user-friends">
-                        <h2><%= user.firstName %> <%= user.surname %></h2>
+
+                        <h2>
+                            <%= user.firstName %>
+                                <%= user.surname %>
+                        </h2>
                         <img src="https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png" alt="">
 
-                        <h3>Direct Friends</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="direcet-friends">
+                                    <h3>Direct Friends</h3>
 
-                        <% friendList.forEach(function(friend) { %>
+                                    <% friendList.forEach(function(friend) { %>
 
-                            <ul>
-                                <li> <a href="/show-friends/<%= friend.id %>"> <%= friend.firstName %> <%= friend.surname %></a></li>
-                            </ul>
+                                        <ul>
+                                            <li>
+                                                <a href="/show-friends/<%= friend.id %>">
+                                                    <%= friend.firstName %>
+                                                        <%= friend.surname %>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <% }); %>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="friends-of-friends">
+                                    <h3>Friends Of Friends</h3>
 
-                        <% }); %>
-                        <a id="back-to-users" href="/users">Back To Users</a>
+                                    <% friendsOfFriends.forEach(function(friend) { %>
+
+                                        <ul>
+                                            <li>
+                                                <a href="/show-friends/<%= friend.id %>">
+                                                    <%= friend.firstName %>
+                                                        <%= friend.surname %>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <% }); %>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="suggested-firends">
+                                    <h3>Suggested Friends</h3>
+                                    <% suggestedFriends.forEach(function(friend) { %>
+                                        <ul>
+                                            <li>
+                                                <a href="/show-friends/ <%= friend.id %>">
+                                                    <%= friend.firstName %>
+                                                        <%= friend.surname %>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    <% }); %>
+                                </div>
+                            </div>
+                            <a id="back-to-users" href="/users">Back To Users</a>
+                        </div>
                     </div>
                 </div>
 
@@ -43,4 +91,5 @@
     </div>
 
 </body>
+
 </html>

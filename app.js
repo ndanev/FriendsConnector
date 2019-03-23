@@ -134,47 +134,47 @@ app.get('/show-friends/:id', function (req, res) {
     var user = findUserById(userID);
 
     var f = friends(userID);
+    var ff = friendsOfFriends(userID);
+    var sf = suggestedFriends(userID);
 
-    res.render('friends', { user: user, friendList: f });
+    res.render('friends', { user: user, friendList: f,  friendsOfFriends: ff, suggestedFriends: sf });
 
 });
-
 
 
 // ======================= //
 // SHOW FRIENDS OF FRIENDS
 // ======================= //
 
-app.get('/friends-of-friends/:id', function (req, res) {
+// app.get('/friends-of-friends/:id', function (req, res) {
 
-    var userID = req.params.id;
+//     var userID = req.params.id;
 
-    var user = findUserById(userID);
+//     var user = findUserById(userID);
 
-    var ff = friendsOfFriends(userID);
+//     var ff = friendsOfFriends(userID);
 
 
-    res.render('friends-of-friends', { user: user, friendsOfFriends: ff });
+//     res.render('friends-of-friends', { user: user, friendsOfFriends: ff });
 
-});
+// });
 
 
 // ======================== //
 // SHOW SUGGENSTED OF FRIENDS
 // ======================== //
 
-app.get('/suggested-friends/:id', function(req, res) {
+// app.get('/suggested-friends/:id', function(req, res) {
     
-    var userID = req.params.id;
+//     var userID = req.params.id;
 
-    var user = findUserById(userID);
+//     var user = findUserById(userID);
 
-    var sf = suggestedFriends(userID);
+//     var sf = suggestedFriends(userID);
 
+//     res.render('suggested-friends', {user: user, suggestedFriends: sf });
 
-    res.render('suggested-friends', {user: user, suggestedFriends: sf });
-
-});
+// });
 
 
 
