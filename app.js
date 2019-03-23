@@ -133,11 +133,19 @@ app.get('/show-user/:id', function (req, res) {
 
     var user = findUserById(userID);
 
-    var f = friends(userID);
     var ff = friendsOfFriends(userID);
     var sf = suggestedFriends(userID);
 
-    res.render('friends', { user: user, friendList: f,  friendsOfFriends: ff, suggestedFriends: sf });
+    res.render('friends', { user: user,  friendsOfFriends: ff, suggestedFriends: sf });
+
+});
+
+app.get('/users/:id/friends', function (req, res) {
+
+    var userID = req.params.id;
+    var user = findUserById(userID);
+
+    res.json(friends(userID));
 
 });
 

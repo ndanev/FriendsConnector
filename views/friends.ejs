@@ -13,9 +13,10 @@
     <!-- GOOGLEFONTS -->
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
+    <script src="/main.js"></script>
 </head>
 
-<body>
+<body onload="populateUsers(<%- user.id %>)">
     <h1>Friends Connector</h1>
     <div class="line"></div>
 
@@ -24,7 +25,6 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="user-friends">
-
                         <h2>
                             <%= user.firstName %>
                                 <%= user.surname %>
@@ -33,20 +33,11 @@
 
                         <div class="row">
                             <div class="col-md-4">
-                                <div class="direcet-friends">
+                                <div class="direct-friends">
                                     <h3>Direct Friends</h3>
 
-                                    <% friendList.forEach(function(friend) { %>
+                                    <div id="direct-friends"></div>
 
-                                        <ul>
-                                            <li>
-                                                <a href="/show-user/<%= friend.id %>">
-                                                    <%= friend.firstName %>
-                                                        <%= friend.surname %>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <% }); %>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -90,6 +81,7 @@
         </div>
     </div>
 
+    
 </body>
 
 </html>
