@@ -127,7 +127,7 @@ app.get('/users', function (req, res) {
 // SHOW DIRECT FRIENDS
 // =================== //
 
-app.get('/show-friends/:id', function (req, res) {
+app.get('/show-user/:id', function (req, res) {
 
     var userID = req.params.id;
 
