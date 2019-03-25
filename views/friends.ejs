@@ -31,6 +31,10 @@
                         </h2>
                         <img src="https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png" alt="">
 
+                        <p><strong>Age:</strong> <%= user.age %></p>
+
+                        <p><strong>Gender:</strong> <%= user.gender %></p>
+
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="direct-friends">
@@ -44,32 +48,16 @@
                                 <div class="friends-of-friends">
                                     <h3>Friends Of Friends</h3>
 
-                                    <% friendsOfFriends.forEach(function(friend) { %>
+                                    <div id="friends-of-friends"></div>
 
-                                        <ul>
-                                            <li>
-                                                <a href="/show-user/<%= friend.id %>">
-                                                    <%= friend.firstName %>
-                                                        <%= friend.surname %>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <% }); %>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="suggested-firends">
                                     <h3>Suggested Friends</h3>
-                                    <% suggestedFriends.forEach(function(friend) { %>
-                                        <ul>
-                                            <li>
-                                                <a href="/show-user/<%= friend.id %>">
-                                                    <%= friend.firstName %>
-                                                        <%= friend.surname %>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    <% }); %>
+
+                                    <div id="suggested-friends"></div>
+
                                 </div>
                             </div>
                             <a id="back-to-users" href="/users">Back To Users</a>
@@ -80,8 +68,6 @@
             </div>
         </div>
     </div>
-
-    
 </body>
 
 </html>

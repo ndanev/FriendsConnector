@@ -12,6 +12,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 
+
 function findUserById(id) {
 
     for (var i = 0; i < users.length; i++) {
@@ -23,6 +24,7 @@ function findUserById(id) {
 
 }
 
+
 function userExistsInList (id, list) {
     for (var i = 0; i < list.length; i++) {
         if (list[i].id == id) {
@@ -31,6 +33,7 @@ function userExistsInList (id, list) {
     } 
     return false;
 }
+
 
 function twoOrMoreCommonFriends(user1, user2) {
 
@@ -111,9 +114,8 @@ function suggestedFriends(userID) {
 }
 
 
-// ============== //
+
 // SHOW ALL USERS //
-// ============== //
 
 app.get('/users', function (req, res) {
 
@@ -123,9 +125,8 @@ app.get('/users', function (req, res) {
 
 
 
-// =================== //
-// SHOW DIRECT FRIENDS
-// =================== //
+
+// SHOW FRIENDS
 
 app.get('/show-user/:id', function (req, res) {
 
@@ -140,6 +141,8 @@ app.get('/show-user/:id', function (req, res) {
 
 });
 
+// DIRECT FRIENDS
+
 app.get('/users/:id/friends', function (req, res) {
 
     var userID = req.params.id;
@@ -150,39 +153,28 @@ app.get('/users/:id/friends', function (req, res) {
 });
 
 
-// ======================= //
-// SHOW FRIENDS OF FRIENDS
-// ======================= //
+// FRIENDS OF FRIENDS
 
-// app.get('/friends-of-friends/:id', function (req, res) {
+app.get('/users/:id/friends-of-friends', function (req, res) {
 
-//     var userID = req.params.id;
+    var userID = req.params.id;
+    var user = findUserById(userID);
 
-//     var user = findUserById(userID);
+    res.json(friendsOfFriends(userID));
 
-//     var ff = friendsOfFriends(userID);
-
-
-//     res.render('friends-of-friends', { user: user, friendsOfFriends: ff });
-
-// });
+});
 
 
-// ======================== //
-// SHOW SUGGENSTED OF FRIENDS
-// ======================== //
+// SUGGESTED FRIENDS
 
-// app.get('/suggested-friends/:id', function(req, res) {
-    
-//     var userID = req.params.id;
+app.get('/users/:id/suggested-friends', function (req, res) {
 
-//     var user = findUserById(userID);
+    var userID = req.params.id;
+    var user = findUserById(userID);
 
-//     var sf = suggestedFriends(userID);
+    res.json(suggestedFriends(userID));
 
-//     res.render('suggested-friends', {user: user, suggestedFriends: sf });
-
-// });
+});
 
 
 
