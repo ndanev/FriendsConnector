@@ -134,10 +134,7 @@ app.get('/show-user/:id', function (req, res) {
 
     var user = findUserById(userID);
 
-    var ff = friendsOfFriends(userID);
-    var sf = suggestedFriends(userID);
-
-    res.render('friends', { user: user,  friendsOfFriends: ff, suggestedFriends: sf });
+    res.render('friends', { user: user });
 
 });
 
