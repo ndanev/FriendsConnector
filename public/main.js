@@ -1,4 +1,25 @@
 
+// GET USER DATA
+
+function getData(userID, url, callback) {
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+
+        if (this.readyState == 4 && this.status == 200) {
+
+            var data = JSON.parse(xhttp.responseText);
+
+            callback(data);
+
+        }
+    }
+    xhttp.open('GET', url, true);
+    xhttp.send();
+
+}
+
 //DIRECT FRIENDS
 
 function populateDirectFriends(userID) {
@@ -30,20 +51,8 @@ function showDirectFriends(friends) {
 
 function getDirectFriends(userID, callback) {
 
-    var xhttp = new XMLHttpRequest();
+    getData(userID, '/users/' + userID + '/friends', callback);
 
-    xhttp.onreadystatechange = function () {
-
-        if (this.readyState == 4 && this.status == 200) {
-
-            var friends = JSON.parse(xhttp.responseText);
-
-            callback(friends);
-
-        }
-    }
-    xhttp.open('GET', '/users/' + userID + '/friends', true);
-    xhttp.send();
 
 }
 
@@ -79,20 +88,7 @@ function showFriendsOfFriends(friendsOfFriends) {
 
 function getFriendsOfFriends(userID, callback) {
 
-    var xhttp = new XMLHttpRequest();
-
-    xhttp.onreadystatechange = function () {
-
-        if (this.readyState == 4 && this.status == 200) {
-
-            var friendsOfFriends = JSON.parse(xhttp.responseText);
-
-            callback(friendsOfFriends);
-
-        }
-    }
-    xhttp.open('GET', '/users/' + userID + '/friends-of-friends', true);
-    xhttp.send();
+    getData(userID, '/users/' + userID + '/friends-of-friends', callback);
 
 }
 
@@ -127,20 +123,9 @@ function showSuggestedFriends(suggestedFriends) {
 
 
 function getSuggestedFriends(userID, callback) {
-    var xhttp = new XMLHttpRequest();
 
-    xhttp.onreadystatechange = function () {
+    getData(userID, '/users/' + userID + '/suggested-friends', callback);
 
-        if (this.readyState == 4 && this.status == 200) {
-
-            var suggestedFriends = JSON.parse(xhttp.responseText);
-
-            callback(suggestedFriends);
-
-        }
-    }
-    xhttp.open('GET', '/users/' + userID + '/suggested-friends', true);
-    xhttp.send();
 } 
 
 
@@ -153,5 +138,5 @@ function populateUsers(userID) {
     populateFriendsOfFriends(userID);
 
     populateSuggestedFriends(userID);
-    
+
 }
